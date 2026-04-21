@@ -1,0 +1,49 @@
+{
+  "name": "Divina Italia El Charco",
+  "short_name": "Divina Italia",
+  "description": "Sistema de cocina profesional - Divina Italia El Charco",
+  "start_url": "/Control-cocina/",
+  "scope": "/Control-cocina/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f0a04",
+  "theme_color": "#c9a96e",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "icons/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["food", "productivity"],
+  "lang": "es",
+  "dir": "ltr"
+}

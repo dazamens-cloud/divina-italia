@@ -1,0 +1,545 @@
+/* =============================================
+   DIVINA ITALIA EL CHARCO — style.css (ULTRA-CLEAN V3)
+   ============================================= */
+
+:root {
+    --bg: #0f0a04;          /* Negro profundo volcánico */
+    --surface: #1a1208;
+    --surface2: #2a1f0a;
+    --border: #5a4010;
+    --gold: #c9a96e;        /* Dorado principal */
+    --gold-dim: #8B6914;
+    --text: #e8d5b0;        /* Crema claro */
+    --muted: #8e7d5d;
+    --atlantico: #00567a;   /* Azul profundo */
+    --volcan: #2c2c2c;      /* Gris basalto */
+    --shadow: 0 8px 32px rgba(0,0,0,0.8);
+}
+
+/* ── BASE & RESET ──────────────────────────── */
+* { 
+    box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent; 
+    outline: none; 
+}
+
+html, body {
+    background-color: var(--bg) !important;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ── ESTRUCTURA DE PANTALLAS ────────────────── */
+.screen {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--bg);
+    animation: fadeIn 0.3s ease-out;
+    will-change: opacity, transform;
+}
+
+.screen.active { 
+    display: flex; 
+    flex-direction: column; 
+}
+
+.screen-content {
+    padding: 20px 15px 40px; 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ── CABECERA PEQUEÑA CON LOGO (Para volver) ───── */
+.app-header {
+    height: 70px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-small {
+    height: 50px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+    cursor: pointer;
+}
+
+/* ── HERO HOME (LOGO PRINCIPAL) ────────────── */
+.hero-canario {
+    height: 42vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    background: radial-gradient(circle at center, #1a1208 0%, #0f0a04 100%);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: url('https://www.transparenttextures.com/patterns/dark-matter.png');
+    opacity: 0.3;
+}
+
+.logo-principal {
+    max-width: 85%;
+    max-height: 80%;
+    object-fit: contain;
+    z-index: 2;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.8));
+}
+
+/* ── GRID DE ACCESOS RÁPIDOS ── */
+.grid-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 20px 15px;
+}
+
+/* Hace que el quinto botón ocupe toda la anchura */
+.grid-stats div:nth-child(5) {
+    grid-column: span 2;
+}
+
+.stat-card {
+    background: var(--surface);
+    border: 1px solid var(--volcan);
+    border-radius: 18px;
+    padding: 22px 10px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.stat-card:active { 
+    transform: scale(0.95); 
+    border-color: var(--gold); 
+}
+
+.stat-icon { 
+    font-size: 2.2rem; 
+    margin-bottom: 10px; 
+}
+
+.stat-label { 
+    font-size: 0.7rem; 
+    color: var(--muted); 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+}
+
+.stat-desc { 
+    font-family: 'Bebas Neue'; 
+    font-size: 1.6rem; 
+    color: var(--gold); 
+    line-height: 1; 
+    margin-top: 5px; 
+}
+
+/* ── TARJETAS Y FORMULARIOS ─────────────────── */
+.section-header { 
+    padding: 40px 20px 10px; 
+    text-align: center; 
+}
+
+.section-title { 
+    font-family: 'Bebas Neue'; 
+    font-size: 2.8rem; 
+    color: var(--gold); 
+    margin: 0; 
+    letter-spacing: 2px; 
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: var(--shadow);
+    margin-bottom: 10px;
+}
+
+input, select, .buscador-productos {
+    width: 100%;
+    background: var(--surface2) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text) !important;
+    padding: 16px !important;
+    border-radius: 12px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* ✅ Focus visible para inputs */
+input:focus, select:focus {
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 8px rgba(201, 169, 110, 0.4);
+    outline: none;
+}
+
+/* ── ELEMENTOS DE COCINA ──────────────────── */
+.grid-elab {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-elab {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 15px 10px;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.2s;
+}
+
+.btn-elab:active {
+    transform: scale(0.96);
+}
+
+.btn-elab.selected {
+    background: var(--gold);
+    color: var(--bg);
+    font-weight: bold;
+}
+
+/* ✅ Focus visible para botones */
+.btn-elab:focus-visible,
+.btn-save:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+}
+
+.ingrediente-row {
+    background: var(--surface2);
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
+}
+
+.ingrediente-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.ingrediente-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.ingrediente-fields input {
+    padding: 8px !important;
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+
+/* ── BOTONES DE ACCIÓN ────────────────────────── */
+.action-buttons { 
+    position: sticky; 
+    bottom: 20px; 
+    padding: 0 15px; 
+    z-index: 999; 
+}
+
+.btn-save, .btn-whatsapp {
+    width: 100%;
+    padding: 18px;
+    border-radius: 15px;
+    font-family: 'Bebas Neue';
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    transition: transform 0.15s, opacity 0.2s;
+}
+
+.btn-save { 
+    background: linear-gradient(135deg, var(--gold), var(--gold-dim)); 
+    color: var(--bg); 
+}
+
+.btn-save:active {
+    transform: scale(0.97);
+}
+
+/* ✅ Botón deshabilitado mejorado */
+.btn-save:disabled { 
+    opacity: 0.5; 
+    filter: grayscale(1); 
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.btn-whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: #fff;
+    margin-top: 10px;
+}
+
+/* ── OVERLAYS ───────────────────────────────── */
+.success-overlay {
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0,0,0,0.95);
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    opacity: 0; 
+    pointer-events: none; 
+    z-index: 11000; 
+    transition: opacity 0.3s;
+}
+
+.success-overlay.show { 
+    opacity: 1; 
+    pointer-events: auto; 
+}
+
+#successIcon { 
+    font-size: 4rem; 
+    margin-bottom: 10px; 
+    animation: bounceIn 0.4s ease-out;
+}
+
+#successText { 
+    font-family: 'Bebas Neue'; 
+    font-size: 2rem; 
+    color: var(--gold); 
+}
+
+/* ── ANIMACIONES ───────────────────────────── */
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(8px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    70% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* ── RESPONSIVE ─────────────────────────────── */
+@media (max-width: 480px) {
+    .grid-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-stats div:nth-child(5) {
+        grid-column: span 1;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .grid-elab {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-desc {
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .screen-content {
+        max-width: 600px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .grid-stats {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .section-header {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+/* ── COMPRAS — SUGERENCIAS ──────────────────── */
+.sugerencias-container {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-top: -6px;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.sugerencia-item {
+    padding: 12px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+    transition: background 0.15s;
+}
+
+.sugerencia-item:last-child {
+    border-bottom: none;
+}
+
+.sugerencia-item:active {
+    background: var(--gold);
+    color: var(--bg);
+}
+
+/* ── UTILIDADES ─────────────────────────────── */
+.hidden { display: none !important; }
+
+.text-gold { color: var(--gold); }
+.text-muted { color: var(--muted); }
+.text-center { text-align: center; }
+.mt-10 { margin-top: 10px; }
+.mb-10 { margin-bottom: 10px; }
+/* ── TARJETAS DE PLATO ───────────────────────── */
+.plato-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+ 
+/* ── BADGE DE FOOD COST ──────────────────────── */
+.badge-fc {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+ 
+.badge-fc-bueno     { background: rgba(76, 175, 80, 0.15);  color: #4caf50; }
+.badge-fc-bien      { background: rgba(201, 169, 110, 0.15); color: var(--gold); }
+.badge-fc-ajustado  { background: rgba(255, 152, 0, 0.15);  color: #ff9800; }
+.badge-fc-revisar   { background: rgba(244, 67, 54, 0.15);  color: #f44336; }
+ 
+/* ── LÍNEAS DE ALBARÁN ───────────────────────── */
+.albaran-linea {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 8px;
+    transition: opacity 0.2s;
+}
+ 
+.albaran-linea.inactiva {
+    opacity: 0.4;
+}
+ 
+/* ── BUSCADOR DE INGREDIENTES (ESCANDALLO) ────── */
+#sugIngEsc div:active,
+#sugIngEsc div:hover {
+    background: var(--surface2);
+}
+ 
+/* ── INPUT SIN PRECIO (alerta visual) ────────── */
+input.sin-precio {
+    border-color: var(--muted) !important;
+    background: var(--surface) !important;
+}
+ 
+input.con-precio {
+    border-color: var(--gold) !important;
+}
+ 
+/* ── GRID HOME — con 6 botones en lugar de 5 ─── */
+/* Reemplaza el grid-stats existente si quieres 3 columnas */
+.grid-stats-6 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 20px 15px;
+}
+ 
+/* El último si es impar ocupa toda la fila */
+.grid-stats-6 .stat-card:last-child:nth-child(odd) {
+    grid-column: span 2;
+}
+ 
+/* ── DESGLOSE DE INGREDIENTES EN TARJETA ─────── */
+.ingrediente-desglose {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+}
+ 
+.ingrediente-desglose-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+    font-size: 0.82rem;
+}
+ 
+/* ── MODAL MÁS ALTO (escandallo tiene muchos items) */
+#modalEscandallo .modal-box {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+ 
+/* ── CATEGORÍA HEADER EN CARTA ───────────────── */
+.carta-categoria-header {
+    font-family: 'Bebas Neue';
+    color: var(--gold);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    padding: 8px 0;
+    border-bottom: 2px solid var(--gold-dim);
+    margin-bottom: 10px;
+    margin-top: 4px;
+}
+ 
+/* ── ESTADO ANÁLISIS ALBARÁN ─────────────────── */
+#albaranStatus {
+    padding: 10px;
+    border-radius: 8px;
+    background: var(--surface2);
+    font-size: 0.85rem;
+    text-align: center;
+    transition: color 0.3s;
+}
+ 
+/* ── RESPONSIVE extra para modal escandallo ─── */
+@media (max-width: 480px) {
+    #modalEscandallo .modal-box {
+        padding: 16px;
+    }
+    
+    #lineasEscandallo input {
+        font-size: 0.75rem !important;
+    }
+}
+ 
